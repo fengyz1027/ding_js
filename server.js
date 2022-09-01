@@ -72,7 +72,7 @@ async function run() {
     var sign = encodeURIComponent(base);
     url = url + `&timestamp=${time}&sign=${sign}`;
 
-    // await axios.post(url,data).then(res=>{})
+    await axios.post(url,data).then(res=>{})
 }
 
 run()
