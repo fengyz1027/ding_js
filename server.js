@@ -42,8 +42,8 @@ async function run() {
         birthday_text  += item.template + '\n'
     })
 
-    const weather = await axios.get("https://devapi.qweather.com/v7/weather/now?key=4d23ff80a7504f6b803baa826244a0a3&location=101120101")
-    const { text, temp, windDir } = weather.data.now
+    const weather = await axios.get("https://devapi.qweather.com/v7/weather/3d?key=4d23ff80a7504f6b803baa826244a0a3&location=101120101")
+    const { textDay: text, tempMin, tempMax, windDirDay: windDir } = weather.data.daily[0]
     const jinshan = await axios.get("http://open.iciba.com/dsapi/")
     const { note, content } = jinshan.data
 
@@ -54,7 +54,7 @@ async function run() {
                 `${date} ${week}\n` +
                 `地区：济南市\n` +
                 `天气：${text}\n`+
-                `气温：${temp}℃\n`+
+                `气温：${tempMin + '-' + tempMax}℃\n`+
                 `风向：${windDir}\n`+
                 `我们恋爱了${love_time_day}天\n`+
                 `${love_time_hours}小时 \n${love_time_mins}分钟 \n${love_time_second}秒 \n`+
